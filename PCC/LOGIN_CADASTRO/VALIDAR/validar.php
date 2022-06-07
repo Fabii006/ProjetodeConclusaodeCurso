@@ -159,32 +159,6 @@ class usuario
             }
         }
     }
-
-    public function getValidarLogin(){
-        require_once('../../CONEXAO/conexao.php');
-        $this->usuario_login = $_POST['usuario_login'];
-        $this->senha_login = $_POST['senha_login'];
-
-        if (!empty($this->usuario_login) and !empty($this->senha_login)){
-            //Buscando usuário no Banco de Dados
-            $buscar_usuario = "SELECT * FROM usuario WHERE Usuario='$usuario' LIMIT 1";
-            $resultado_busca = mysqli_query($conex, $buscar_usuario);
-
-            if ($resultado_busca){
-                $row_usuario = mysqli_fetch_assoc($resultado_busca);
-                if (password_verify($this->senha_login, $row_usuario['Senha'])){
-                    setcookie('continuar_logado', '1', time() + (60 * 60 * 24), '/');
-                    setcookie("ID", "{$row_usuario['ID']}", time() + (60 * 60 * 24), '/');
-                    header("Location: ../../MEUS_ALERTAS/index.php");
-                }
-                else{
-                    $_SESSION['msg2'] = "<p style='color: red; padding: 6px 20px;'>Usuário ou senha incorreta!</p>";
-                    header('Location: ../index.php?login=true');
-                }
-            }
-            
-        }
-    }
 }
 ?>
 </pre>

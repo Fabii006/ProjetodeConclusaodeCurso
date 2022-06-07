@@ -84,9 +84,9 @@ if (@$_COOKIE['continuar_logado']) {
                         unset($_SESSION['msg2']);
                     }
                     ?>
-                    <form action="VALIDAR/validar.php" class="form" name="logar" method="POST">
-                        <input type="text" name="usuario_login" class="input_login" placeholder="Usuário" required>
-                        <input type="password" name="senha_login" class="input_login" placeholder="Senha" required>
+                    <form action="VALIDAR/validar_login.php" class="form" name="logar" method="POST">
+                        <input type="text" name="usuario" class="input_login" placeholder="Usuário" required>
+                        <input type="password" name="senha" class="input_login" placeholder="Senha" required>
                         <a href="#" class="esqueci_senha">Esqueci senha</a>
                         <button type="submit" class="btn btn_2">LOGAR</button>
                     </form>
