@@ -5,31 +5,46 @@ function CriarAlerta() {
 
   let container1 = document.querySelector('Nav');
   container1.style.display = 'none';
-
-  let container2 = document.querySelector('.Div_MeusAlertas');
+  let container2 = document.querySelector('.alerta_container');
   container2.style.display = 'none';
+  let container3 = document.querySelector('.img_pus');
+  container3.style.display = 'none';
 }
 
 function Fechar() {
   let container = document.querySelector('.Div_CriarAlertas');
   container.style.display = 'none';
+  let containerOcultar = document.querySelector('.Abrir_alerta');
+  containerOcultar.style.display = 'none';
 
   let container1 = document.querySelector('Nav');
   container1.style.display = 'block';
-
-  let container2 = document.querySelector('.Div_MeusAlertas');
+  let container2 = document.querySelector('.alerta_container');
   container2.style.display = 'block';
+  let container3 = document.querySelector('.img_pus');
+  container3.style.display = 'block';
 }
 
 document.querySelector('.select-tipo').addEventListener('change', (e) => {
-  if (e.target.value == 1) {
-    document.querySelector('.content-form-doacoes').classList.add('content-form-doacoes-active')
-    document.querySelector('.content-form-genericos').classList.remove('content-form-doacoes-active')
+  if (e.target.value == "Fornecer ajuda") {
+    document.querySelector('.tipo_2').classList.add('tipo_2-active')
   } else {
-    document.querySelector('.content-form-doacoes').classList.remove('content-form-doacoes-active')
-    document.querySelector('.content-form-genericos').classList.add('content-form-doacoes-active')
+    document.querySelector('.tipo_2').classList.remove('tipo_2-active')
   }
 });
+
+function formataTel(telefone) {
+  const elementoAlvo = telefone
+  const telAtual = telefone.value
+
+  let telAtualizado;
+
+  telAtualizado = telAtual.replace(/(\d{2})(\d{5})(\d{4})/,
+    function (regex, argumento1, argumento2, argumento3) {
+      return '(' + argumento1 + ')' + argumento2 + '-' + argumento3;
+    })
+  elementoAlvo.value = telAtualizado;
+}
 
 // CONTEÚDO PARA SELECIONAR A CIDADE DE ACORDO O ESTADO
 var json_cidades = {
@@ -5819,4 +5834,38 @@ function buscaCidades(e) {
   } else {
     document.querySelector("#cidade").innerHTML = '';
   }
+}
+
+const cardAlertaId = document.getElementById('card-alerta-id');
+const cardAlertaImagem = document.getElementById('card-alerta-img');
+const cardAlertaTitulo = document.getElementById('card-alerta-titulo');
+const cardAlertaNome = document.getElementById('card-alerta-nome');
+const cardAlertaTipo = document.getElementById('card-alerta-tipo');
+const cardAlertaEstado = document.getElementById('card-alerta-estado');
+const cardAlertaCidade = document.getElementById('card-alerta-cidade');
+const cardAlertaContato = document.getElementById('card-alerta-contato');
+const cardAlertaProfissao = document.getElementById('card-alerta-profissao');
+const cardAlertaRegistro = document.getElementById('card-alerta-registro');
+const cardAlertaDescricao = document.getElementById('card-alerta-descricao');
+
+function Abrir_alerta(idCard) {
+  let container = document.querySelector('.Abrir_alerta');
+  container.style.display = 'block';
+
+  let containerOcultar = document.querySelector('nav', '.alerta_container');
+  containerOcultar.style.display = 'none';
+  let containerOcultar2 = document.querySelector('.alerta_container');
+  containerOcultar2.style.display = 'none';
+
+
+  cardAlertaImagem.src = document.querySelector(`#card__alertas-img-${idCard}`).src;
+  cardAlertaTitulo.innerHTML = document.querySelector(`#card__alertas-titulo-${idCard}`).innerHTML;
+  cardAlertaDescricao.innerHTML = document.querySelector(`#card__alertas-paragrafo-${idCard}`).innerHTML;
+  cardAlertaNome.innerHTML = "Nome: " + document.querySelector(`#card__alertas-nome-${idCard}`).value;
+  cardAlertaTipo.innerHTML = "Tipo: " + document.querySelector(`#card__alertas-tipo-${idCard}`).value;
+  cardAlertaEstado.innerHTML = "Estado: " + document.querySelector(`#card__alertas-estado-${idCard}`).value;
+  cardAlertaCidade.innerHTML = "Cidade: " + document.querySelector(`#card__alertas-cidade-${idCard}`).value;
+  cardAlertaContato.innerHTML = "Contato: " + document.querySelector(`#card__alertas-contato-${idCard}`).value;
+  cardAlertaProfissao.innerHTML = "Profissão: " + document.querySelector(`#card__alertas-profissao-${idCard}`).value;
+  cardAlertaRegistro.innerHTML = "Registro: " + document.querySelector(`#card__alertas-registro-${idCard}`).value;
 }

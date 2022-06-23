@@ -197,6 +197,7 @@ select {
     width: 40%;
     margin: auto;
     margin-top: 5%;
+    background-color: transparent;
     border: 3px solid white;
     color: #fff;
 }
@@ -224,12 +225,6 @@ select {
 .esqueci_senha:hover {
     text-decoration: none;
     color: red;
-}
-
-.msg_js {
-    color: red;
-    margin: auto;
-    margin-top: 2%;
 }
 
 /** Second-content**/

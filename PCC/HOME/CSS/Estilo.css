@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*COMEÇO DO NAVBAR*/
+nav {
+    width: 100%;
+    height: 14vh;
+}
+
+.logo {
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.Div_titlesNav {
+    width: 100%;
+    display: inline-block;
+    height: 100px;
+    text-align: right;
+}
+
+.title_nav {
+    display: inline-block;
+    margin-right: 5%;
+    margin-top: 40px;
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000;
+}
+
+.title_nav:hover {
+    color: gray;
+}
+
+.title_cursor {
+    cursor: default;
+    color: gray;
+}
+
+.btn_home {
+    border: none;
+    width: 106px;
+    height: 32px;
+    cursor: pointer;
+    transition: 0.7s;
+    margin-right: 10%;
+    background: #43B996;
+    border-radius: 15px 0px;
+    /*texto*/
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+
+.btn_home:hover {
+    background-color: #8bd6c5;
+    color: #fff;
+}
+
+/*FIM DO NAVBAR*/
+
+.div_1 {
+    width: 35%;
+    margin-top: 7%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    display: inline-block;
+}
+
+.hello {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 23px;
+    color: #646464;
+}
+
+.BemVindo {
+    width: 461px;
+    height: 100%;
+    margin-bottom: 1%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60.1739px;
+    line-height: 65px;
+    color: #212121;
+}
+
+.description {
+    width: 461px;
+    height: 100%;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    text-align: justify;
+    font-size: 15.0435px;
+    line-height: 25px;
+    color: #646464;
+}
+
+.SaibaMais {
+    margin-top: 5%;
+    width: 170px;
+    height: 36px;
+}
+
+.img_home {
+    display: inline-block;
+    right: 10%;
+    top: 30%;
+    position: absolute;
+    display: inline-block;
+}
+
+.div_2 {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.title_1 {
+    margin-left: 10%;
+    margin-bottom: 4px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 23px;
+    color: #646464;
+}
+
+.title_2 {
+    color: #212121;
+    font-size: 37px;
+    margin-left: 10%;
+    margin-bottom: 2%;
+}
+
+.div_cards{
+    width: 90%;
+    margin-left: 10%;
+}
+
+.cards{
+    width: 334px;
+    height: 145px;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-right: 6.4%;
+    position: relative;
+    display: inline-block;
+    background: #FFFFFF;
+    box-shadow: 0px 6.29304px 15.7326px rgba(0, 0, 0, 0.14);
+    border-radius: 47.1978px 0px;
+}
+
+.icone_card_s{
+    position: relative;
+    left: 8%;
+    top: 14%;
+}
+
+.title_card{
+    top: 0;
+    left: 30%;
+    width: 70%;
+    position: absolute;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 61px;
+    color: #000000;
+}
+
+.title_card2{
+    color: #FFFFFF;
+}
+
+.description_card{
+    position: absolute;
+    width: 60%;
+    left: 30%;
+    margin-top: 5%;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: justify;
+    letter-spacing: -0.01em;
+    color: #646464;
+}
+
+.description_card2{
+    color: #fff;
+}
+
+.card_1{
+    background: #37806B;
+    border: 2px solid transparent;
+}
+
+.title_ONG {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60.1739px;
+    line-height: 65px;
+    color: #212121;
+}
+
+.div_cinza {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    display: block;
+    background: #F8F8F8;
+}
+
+.div_branco {
+    width: 100%;
+    margin: auto;
+    height: 300px;
+    display: block;
+    background: #FFFFFF;
+}
+
+.titulo {
+    margin-top: 2%;
+    margin-left: 10%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    color: #212121;
+}
+
+.title_insta {
+    margin-left: 10%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.5243px;
+    line-height: 26px;
+    color: #646464;
+}
+
+.description_ongs {
+    width: 816px;
+    margin-top: 1%;
+    margin-left: 10%;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.7718px;
+    line-height: 26px;
+    text-align: justify;
+    color: #646464;
+}
+
+.div_3 {
+    display: block;
+}
+
+.div_4 {
+    display: none;
+}
+
+.div_cinza2 {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    display: block;
+    background: #F8F8F8;
+}
+
+.div_branco2 {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    display: block;
+    background: #FFFFFF;
+}
+
+.img_artista {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 3%;
+}
+
+.div_text {
+    width: 50%;
+    margin-top: 8%;
+    position: absolute;
+    display: inline-block;
+}
+
+.titulo_artista {
+    margin-bottom: 2%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 50px;
+    color: #212121;
+}
+
+.Subtitulo_artista {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.5243px;
+    line-height: 26px;
+    color: #646464;
+}
+
+.description_artista {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.7718px;
+    line-height: 26px;
+    text-align: justify;
+    color: #646464;
+}
+
+.div_text2 {
+    width: 50%;
+    margin-left: 10%;
+    margin-right: 3%;
+    margin-top: 8.5%;
+    display: inline-block;
+}
+
+.img_artista2 {
+    margin-top: 5%;
+    position: absolute;
+    display: inline-block;
+}
+
+.logo_rodape {
+    margin: auto;
+    display: block;
+    margin-top: 10%;
+    margin-bottom: 1%;
+}
+
+.Footer {
+    width: 100%;
+    margin-bottom: 2%;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    color: #212121;
+}

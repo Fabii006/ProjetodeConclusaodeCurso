@@ -2,7 +2,8 @@
 SESSION_start();
 $containerCssAcesso = @$_GET['login'] == 'true' ? 'logar-js' : 'cadastrar-js';
 if (@$_COOKIE['continuar_logado']) {
-    header('location: ../MEUS_ALERTAS/index.php');
+    header('location: ../ALERTAS/index.php');
+    return true;
 } else {
 ?>
     <!DOCTYPE html>
@@ -45,30 +46,30 @@ if (@$_COOKIE['continuar_logado']) {
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    <form name="cadastro" action="VALIDAR/validar.php" class="form" method="POST">
+                    <form name="cadastro" action="VALIDAR/objeto_user.php" class="form" method="POST">
                         <input type="text" name="nome" class="input_menor" placeholder="Nome" required>
                         <input type="text" name="sobrenome" class="input_menor" placeholder="Sobrenome" required>
-                        <input type="text" name="nome_social" placeholder="Nome social">
+                        <input type="text" name="nome_social" placeholder="Nome social" required>
                         <input type="text" name="usuario" placeholder="Usuário" required>
                         <input type="email" name="email" placeholder="Email" required>
-                        <input type="text" name="cpf" id="input" onkeydown="validarCPF(event)" placeholder="CPF" required>
-                        <span id="password-status" class="validar_js"></span>
+                        <input type="text" name="cpf" id="btn" placeholder="CPF (SOMENTE NÚMEROS)" onblur="formataCPF(this)" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required>
                         <input type="password" name="senha" id="password" minlength="6" maxlength="15" onKeyUp="validar();" placeholder="Senha" required>
                         <input type="password" name="senha2" id="confirm_password" minlength="6" maxlength="15" placeholder="Confirmar Senha" required><br>
                         <input type="date" name="nascimento" id="nascimento" class="input_menor" placeholder="Nascimento" required>
-                        <select name="genero">
-                            <option value="Mulher_cis">Mulher cis</option>
-                            <option value="Homem_cis">Homem cis</option>
-                            <option value="Mulher_trans">Mulher trans</option>
-                            <option value="Homem_trans">Homem trans</option>
-                            <option value="Não-binário">Não-binário</option>
-                            <option value="N_especificar">Não especificar</option>
-                        </select><br>
-                        <input type="submit" class="btn" id="btn" onclick="validar()" name="btn" value="CADASTRAR">
+                        <select name="genero" required>
+                            <option value="" disabled selected>Gênero</option>
+                            <option value="Mulher cis">Mulher cis</option>
+                            <option value="Homem cis">Homem cis</option>
+                            <option value="Mulher trans">Mulher trans</option>
+                            <option value="Homem trans">Homem trans</option>
+                            <option value="Não binário">Não-binário</option>
+                            <option value="Não especificar">Não especificar</option>
+                        </select>
+                        <input type="hidden" name="sessao" value="cadastro">
+                        <input type="submit" id="btn_cadastrar" class="btn" name="btn" value="CADASTRAR" disabled>
                     </form>
-
-                </div> <!-- second column-->
-            </div> <!-- first content -->
+                </div>
+            </div>
 
             <div class="content second-content">
                 <div class="first-column">
@@ -84,14 +85,15 @@ if (@$_COOKIE['continuar_logado']) {
                         unset($_SESSION['msg2']);
                     }
                     ?>
-                    <form action="VALIDAR/validar_login.php" class="form" name="logar" method="POST">
+                    <form class="form" action="VALIDAR/objeto_user.php" name="logar" method="POST">
                         <input type="text" name="usuario" class="input_login" placeholder="Usuário" required>
-                        <input type="password" name="senha" class="input_login" placeholder="Senha" required>
+                        <input type="password" name="senha" class="input_login" placeholder="Senha" >
                         <a href="#" class="esqueci_senha">Esqueci senha</a>
+                        <input type="hidden" name="sessao" value="login">
                         <button type="submit" class="btn btn_2">LOGAR</button>
                     </form>
-                </div> <!-- second column-->
-            </div><!-- second-content-->
+                </div>
+            </div>
         </div>
         <script src="JS/JavaScript.js"></script>
     </body>

@@ -10,54 +10,54 @@ btnCadastrar.addEventListener("click", function () {
 	body.className = "cadastrar-js"
 });
 
-function validar() {
+var password = document.getElementById("password");
+var confirm_password = document.getElementById("confirm_password");
+
+function validatePassword() {
+	if (password.value != confirm_password.value) {
+		confirm_password.setCustomValidity("Senhas diferentes!");
+	} else {
+		confirm_password.setCustomValidity('');
+	}
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+let campoSenha = document.querySelector('#password');
+let botao = document.querySelector('#btn_cadastrar');
+
+campoSenha.addEventListener('input', function () {
+	verificaCampos();
+});
+
+campoConfirmarSenha.addEventListener('input', function () {
+	verificaCampos();
+});
+
+function verificaCampos() {
 	var numeros = /([0-9])/;
 	var alfabeto = /([a-zA-Z])/;
 	var minúscula = /([a-z])/;
 	var maiúscula = /([A-Z])/;
-
-	if ($('#password').val().length < 6 && $('#password').val().match(alfabeto)) {
-		$('#password-status').html("<span style='color:red; padding: 6px 20px;'>Insira no mínimo 6 caracteres!</span>");
-
-	} else {
-		if (!$('#password').val().match(numeros)) {
-			$('#password-status').html("<span style='color:red; padding: 6px 20px;'>Fraca, insira pelo menos um número!</span>");
-		}
-
-		if ($('#password').val().match(numeros)) {
-			$('#password-status').html("<span style='color:red; padding: 6px 20px;'>Fraca, insira pelo menos uma letra minúscula!</span>");
-		}
-
-		if ($('#password').val().match(minúscula) && $('#password').val().match(numeros)) {
-			$('#password-status').html("<span style='color:#EEAD2D; padding: 6px 20px;'>Médio, insira pelo menos uma letra maiúscula!</span>");
-		}
-
-		if ($('#password').val().length > 6 && $('#password').val().match(numeros) && $('#password').val().match(minúscula) && $('#password').val().match(maiúscula)) {
-			$('#password-status').html("<span style='color:green; padding: 6px 20px;'>Senha forte!</span>");
-		}
+	if (campoSenha.value.length >= 6 && campoSenha.value.match(numeros) && campoSenha.value.match(alfabeto) && campoSenha.value.match(minúscula) && campoSenha.value.match(maiúscula)) {
+		botao.disabled = false;
 	}
+	else {
+		botao.disabled = true;
+	}
+
 }
 
-var inputdata = document.querySelector('#input');
-function validarCPF(event) {
-	var x = event.keyCode;
-	if (x == 96 || x == 97 || x == 98 || x == 99 || x == 100 || x == 101 || x == 102 || x == 103 || x == 104 || x == 105 || x == 48 || x == 49 || x == 50 || x == 51 || x == 52 || x == 53 || x == 54 || x == 55 || x == 56 || x == 57) {
-		if (x != 8) {
-			inputdata.maxLength = "14";
-			if (inputdata.value.length == 3 || inputdata.value.length == 7) {
-				inputdata.value += '.';
-			}
-			if (inputdata.value.length == 11) {
-				inputdata.value += '-';
+function formataCPF(cpf) {
+	const elementoAlvo = cpf
+	const cpfAtual = cpf.value
 
-			}
-		}
-	} else {
-		if (inputdata.value.length < 14) {
-			setTimeout(() => {
-				inputdata.value = inputdata.value.substr(0, inputdata.value.length - 1);
-			}, 10)
-		}
-	}
+	let cpfAtualizado;
 
+	cpfAtualizado = cpfAtual.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,
+		function (regex, argumento1, argumento2, argumento3, argumento4) {
+			return argumento1 + '.' + argumento2 + '.' + argumento3 + '-' + argumento4;
+		})
+	elementoAlvo.value = cpfAtualizado;
 }
