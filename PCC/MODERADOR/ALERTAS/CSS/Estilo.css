@@ -18,7 +18,7 @@ nav {
 
 .logo_site {
     margin-top: 1%;
-    margin-left: 15%;
+    margin-left: 25%;
 }
 
 .Div_titlesNav {
@@ -49,11 +49,6 @@ nav {
 }
 
 .title_nav:hover {
-    color: gray;
-}
-
-.title_cursor {
-    cursor: default;
     color: gray;
 }
 
@@ -115,64 +110,19 @@ nav {
 
 /*FIM DO NAVBAR*/
 
-.VoceChegou {
-    display: flex;
-    padding: 8% 10%;
-    width: 100%;
-    height: auto;
-}
-
-.hello {
-    width: 155px;
-    height: 22px;
-
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16.715px;
-    line-height: 23px;
-    color: #646464;
-}
-
-.titulo_1 {
-    width: 461px;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 60.1739px;
-    color: #212121;
-}
-
-.description {
-    width: 503.96px;
-    height: 75.22px;
-
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15.0435px;
-    line-height: 25px;
-    text-align: justify;
-    color: #7b7878;
-}
-
-.description_2 {
-    margin-top: 10px;
-}
-
 .card_alerta {
-    position: absolute;
-    width: 366px;
+    width: 370px;
     height: 50px;
-    top: 730px;
-    right: 10%;
+    margin-top: 5%;
+    margin-left: 7%;
+    margin-bottom: 5%;
     border-radius: 31px;
     background: #EEEEEE;
+    box-shadow: 5.58372px 5.58372px 23.9302px 3.98837px rgba(66, 96, 84, 0.15);
 }
 
 .button_card {
-    position: absolute;
+    display: inline-block;
     border: none;
     width: 183px;
     height: 50px;
@@ -190,26 +140,21 @@ nav {
 }
 
 .button_card2 {
+    display: inline-block;
     right: 0%;
     color: #FFFFFF;
     background-color: #43B996;
     border-radius: 0px 20px 20px 20px;
 }
 
-.img_alertas {
-    display: flex;
-    margin-left: 20%;
-
-}
-
-.solicitar {
+.alertas_ativos {
     width: 100%;
     margin: auto;
     display: block;
     margin-bottom: 3%;
 }
 
-.fornecer {
+.alertas_denunciados {
     width: 100%;
     margin: auto;
     display: none;
@@ -219,7 +164,7 @@ nav {
 .content-meusalertas {
     width: 80%;
     max-width: 100%;
-    margin: auto;
+    margin-left: 7%;
     display: block;
 
 }
@@ -228,7 +173,6 @@ nav {
     display: flex;
     width: 100%;
     height: 210px;
-    right: 10%;
     background: #FFFFFF;
     box-shadow: 5.58372px 5.58372px 23.9302px 3.98837px rgba(66, 96, 84, 0.15);
     border-radius: 55.8372px 0px;
@@ -298,6 +242,7 @@ nav {
     color: #8bd6c5;
 }
 
+
 /*CSS da div abrir alerta*/
 .Abrir_alerta {
     display: none;
@@ -341,9 +286,9 @@ nav {
 }
 
 .Title_abrirAlerta2 {
+    width: 85%;
     margin-left: 3%;
     margin-bottom: 0%;
-    width: 85%;
 }
 
 .titles {
@@ -382,24 +327,24 @@ nav {
     font-family: 'Open Sans';
 }
 
-.Form_denunciar{
-    width: 160px;
+.DivExcluirAlerta {
+    width: 170px;
     margin: auto;
+    display: block;
 }
 
-.btn_denunc {
-    width: 90px;
+.Excluir_alerta {
+    width: 100px;
     height: 40px;
     border: none;
-    margin-left: 0%;
+    margin: 2%;
     cursor: pointer;
     color: #fff;
     background: #43B996;
     border-radius: 15px 0px;
-    text-transform: uppercase;
 }
 
-.btn_denunc:hover {
+.Excluir_alerta:hover {
     background-color: #8bd6c5;
     color: #fff;
 }

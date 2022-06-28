@@ -227,6 +227,21 @@ select {
     color: red;
 }
 
+.div_msg{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 0.5%;
+    display: block;
+    text-align: center;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
+    color: red;
+}
+
 /** Second-content**/
 .second-content {
     position: absolute;

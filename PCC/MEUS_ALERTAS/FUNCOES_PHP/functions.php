@@ -2,7 +2,7 @@
 
 function getMyAlert($conex){
 	$id = $_COOKIE['ID'];
-	$query = "SELECT * FROM alerta WHERE ID_usuario = '$id' AND Estatus = 'ATIVO' ORDER BY id DESC";
+	$query = "SELECT * FROM alerta WHERE Estatus = 'ATIVO' AND ID_usuario = '$id' ORDER BY id DESC";
 	$result = $conex->query($query);
 	$dados = [];
 	if ($result->num_rows > 0) {

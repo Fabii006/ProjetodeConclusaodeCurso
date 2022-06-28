@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Jun-2022 às 02:52
+-- Tempo de geração: 27-Jun-2022 às 05:47
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -30,15 +30,28 @@ SET time_zone = "+00:00";
 CREATE TABLE `alerta` (
   `ID` int(11) NOT NULL,
   `Titulo` varchar(40) NOT NULL,
-  `value1` varchar(20) NOT NULL,
-  `value2` varchar(250) NOT NULL,
+  `Estado` varchar(5) NOT NULL,
+  `Cidade` varchar(20) NOT NULL,
+  `Profissao` varchar(40) NOT NULL,
+  `Registro` varchar(40) NOT NULL,
+  `Contato` char(14) NOT NULL,
   `Descricao` longtext NOT NULL,
-  `Tipo` varchar(10) NOT NULL,
+  `Tipo` varchar(20) NOT NULL,
   `ID_usuario` int(11) DEFAULT NULL,
   `Tempo` varchar(10) NOT NULL,
   `Estatus` varchar(10) NOT NULL,
-  `ID_imagens` int(11) DEFAULT NULL
+  `Denuncias` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `alerta`
+--
+
+INSERT INTO `alerta` (`ID`, `Titulo`, `Estado`, `Cidade`, `Profissao`, `Registro`, `Contato`, `Descricao`, `Tipo`, `ID_usuario`, `Tempo`, `Estatus`, `Denuncias`) VALUES
+(119, 'Eu preciso de ajuda urgente', 'BA', 'Guanambi', '', '', '(77)99857-5342', 'Eu preciso de ajuda, sofro de ansiedade e outros transtornos por causa da minha sexualidade. Vivo em uma famÃ­lia homofÃ³bica e de extrema direita, peÃ§o ajuda de um profissional e de um lugar para ficar. ', 'Solicitar ajuda', 67, '26/06/2022', 'ATIVO', 19),
+(120, 'Alerta teste', 'AP', 'AmapÃ¡', 'PsicÃ³logo(a)', '123456789555', '(77)99857-5342', 'Preencha todas as informaÃ§Ãµes corretamente de acordo com as instruÃ§Ãµes dos campos, em tipo selecione Fornecer ajuda, caso seu alerta almeja fornecer ajuda voluntÃ¡ria (Ã© preciso ser um profissional e comprovar com o respectivo registro), ou solicitar ajuda, caso seja um usuÃ¡rio comum e necessita de ajuda. Aproveite!!!', 'Fornecer ajuda', 67, '26/06/2022', 'ATIVO', 0),
+(121, 'Eu me odeio', 'BA', 'AbaÃ­ra', '', '', '(77)99857-5342', 'Preencha todas as informaÃ§Ãµes corretamente de acordo com as instruÃ§Ãµes dos campos, em tipo selecione Fornecer ajuda, caso seu alerta almeja fornecer ajuda voluntÃ¡ria (Ã© preciso ser um profissional e comprovar com o respectivo registro), ou solicitar ajuda, caso seja um usuÃ¡rio comum e necessita de ajuda. Aproveite!!!', 'Solicitar ajuda', 69, '27/06/2022', 'ATIVO', 5),
+(122, 'Eu me odeio', 'BA', 'AbaÃ­ra', 'Advogado(a)', '12345678912', '(77)99857-5342', 'Preencha todas as informaÃ§Ãµes corretamente de acordo com as instruÃ§Ãµes dos campos, em tipo selecione Fornecer ajuda, caso seu alerta almeja fornecer ajuda voluntÃ¡ria (Ã© preciso ser um profissional e comprovar com o respectivo registro), ou solicitar ajuda, caso seja um usuÃ¡rio comum e necessita de ajuda. Aproveite!!!', 'Fornecer ajuda', 67, '27/06/2022', 'ATIVO', 0);
 
 -- --------------------------------------------------------
 
@@ -68,10 +81,16 @@ CREATE TABLE `usuario` (
   `Nascimento` varchar(10) NOT NULL,
   `Genero` varchar(30) NOT NULL,
   `Imagem_perfil` varchar(250) DEFAULT NULL,
-  `ID_alerta` int(11) DEFAULT NULL,
-  `nivel` int(11) NOT NULL,
-  `CPF` char(15) NOT NULL
+  `CPF` char(15) NOT NULL,
+  `Status` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`ID`, `Nome`, `Sobrenome`, `Nome_social`, `Usuario`, `Email`, `Senha`, `Nascimento`, `Genero`, `Imagem_perfil`, `CPF`, `Status`) VALUES
+(66, 'Alessandro', 'Dos Santos GonÃ§alves', 'Alessandro', 'Alessandro_fenty', 'alesandroemae@gmail.com', '$2y$10$q4Lx3sIXHQ30nXiBB8WHH.IFi2JaAQC7vFSKB0eqoKzjPTvWCtn7y', '2000-08-11', 'Homem cis', 'unnamed.png', '', 'ATIVO');
 
 --
 -- Índices para tabelas despejadas
@@ -82,8 +101,7 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `alerta`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_usuario` (`ID_usuario`),
-  ADD KEY `fk_imagens` (`ID_imagens`);
+  ADD KEY `fk_usuario` (`ID_usuario`);
 
 --
 -- Índices para tabela `imagens`
@@ -95,8 +113,7 @@ ALTER TABLE `imagens`
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_alerta` (`ID_alerta`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -106,7 +123,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `alerta`
 --
 ALTER TABLE `alerta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`
@@ -118,7 +135,7 @@ ALTER TABLE `imagens`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

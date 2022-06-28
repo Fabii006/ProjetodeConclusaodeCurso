@@ -377,3 +377,7 @@ nav {
     text-align: center;
     color: #212121;
 }
+
+a{
+    text-decoration: none;
+}

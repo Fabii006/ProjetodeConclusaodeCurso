@@ -22,16 +22,21 @@ class usuario
         return $this->$name;
     }
 
+    public function getStatus()
+    {
+        $ativo = 'ATIVO';
+        return $ativo;
+    }
+
     public function cadastrar()
     {
         $conex = mysqli_connect("localhost", "root", "", "alerte");
-        $id = $_COOKIE['ID'];
-        if (!empty($this->nome) and !empty($this->sobrenome) and !empty($this->nome_social) and !empty($this->usuario) and !empty($this->email) and !empty($this->cpf) and !empty($this->senha) and !empty($this->nascimento) and !empty($this->genero)) {
+        if (!empty($this->nome) and !empty($this->sobrenome) and !empty($this->usuario) and !empty($this->email) and !empty($this->cpf) and !empty($this->senha) and !empty($this->nascimento) and !empty($this->genero)) {
             //Criptografando a senha
             $this->senha = password_hash($this->senha, PASSWORD_DEFAULT);
             //Inserindo usuário no Banco de dados
-            $cadastrar_usuario = "INSERT INTO usuario(Nome, Sobrenome, Nome_social, Usuario, Email, Senha, Nascimento, Genero, Imagem_perfil, CPF) 
-            VALUES ('$this->nome', '$this->sobrenome', '$this->nome_social', '$this->usuario', '$this->email', '$this->senha','$this->nascimento', '$this->genero', 'unnamed.png', '$this->cpf')";
+            $cadastrar_usuario = "INSERT INTO usuario(Nome, Sobrenome, Nome_social, Usuario, Email, Senha, Nascimento, Genero, Imagem_perfil, CPF, Status) 
+            VALUES ('$this->nome', '$this->sobrenome', '$this->nome_social', '$this->usuario', '$this->email', '$this->senha','$this->nascimento', '$this->genero', 'unnamed.png', '$this->cpf', '{$this->getStatus()}')";
             mysqli_query($conex, $cadastrar_usuario);
         } else {
             $_SESSION['msg'] = "<p style='color: red;'>Preencha todos os campos!</p>";
@@ -56,10 +61,20 @@ class usuario
             if ($resultado_do_usuario) {
                 $row_usuario = mysqli_fetch_assoc($resultado_do_usuario);
                 if (password_verify($this->senha, $row_usuario['Senha'])) {
-                    setcookie('continuar_logado', '1', time() + (60 * 60 * 24), '/');
-                    setcookie("ID", "{$row_usuario['ID']}", time() + (60 * 60 * 24), '/');
-                    header("Location: ../../ALERTAS/index.php");
-                    return true;
+                    if ($row_usuario['Status'] == 'ATIVO') {
+                        if ($row_usuario['ID'] == '1') {
+                            setcookie('continuar_logado', '1', time() + (60 * 60 * 24), '/');
+                            setcookie("ID", "{$row_usuario['ID']}", time() + (60 * 60 * 24), '/');
+                            header("Location: ../../MODERADOR/ALERTAS/index.php");
+                        } else {
+                            setcookie('continuar_logado', '1', time() + (60 * 60 * 24), '/');
+                            setcookie("ID", "{$row_usuario['ID']}", time() + (60 * 60 * 24), '/');
+                            header("Location: ../../ALERTAS/index.php");
+                        }
+                    } else {
+                        header('Location: ../index.php?login=true');
+                        $_SESSION['msg2'] = "Conta inativa!";
+                    }
                 } else {
                     $_SESSION['msg2'] = "<p style='color: red; padding: 6px 20px;'>Usuário ou senha incorreta!</p>";
                     header('Location: ../index.php?login=true');
@@ -108,6 +123,26 @@ class usuario
         $this->senha = password_hash($this->senha, PASSWORD_DEFAULT);
         mysqli_query($conex, "UPDATE usuario SET Senha = '$this->senha' WHERE ID = '$id'");
         $_SESSION['msg'] = "<p style='color: green;'>Senha alterada com sucesso!</p>";
+        header('location: ../index.php');
+    }
+}
+
+class moderador extends usuario
+{
+
+    public function remover()
+    {
+        $conex = mysqli_connect("localhost", "root", "", "alerte");
+        $id = $_POST['id_alerta'];
+        mysqli_query($conex, "UPDATE alerta SET Estatus = 'REMOVIDO' WHERE ID = '$id'");
+        header('location: ../index.php');
+    }
+
+    public function desativar_user()
+    {
+        $conex = mysqli_connect("localhost", "root", "", "alerte");
+        $id = $_GET['id_user'];
+        mysqli_query($conex, "UPDATE Usuario SET Status = 'INATIVO' WHERE ID = '$id'");
         header('location: ../index.php');
     }
 }

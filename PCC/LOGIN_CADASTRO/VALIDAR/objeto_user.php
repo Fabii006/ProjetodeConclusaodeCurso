@@ -47,12 +47,12 @@ if ($_POST['sessao'] == 'login') {
     }
     //Verifica se o usuário informado já está cadastrado 
     elseif ($resultado_user->num_rows != 0) {
-        $_SESSION['msg'] = "<p style='color: red;'>Usuário já cadastrado!</p>";
+        $_SESSION['msg'] = "Usuário já cadastrado!";
         header('Location: ../index.php');
     }
     //Verifica a idade do usuário.
     elseif ($idade < 18 or $idade > 100) {
-        $_SESSION['msg'] = "<p style='color: red; padding: 6px 20px;'>Idade não permetida!</p>";
+        $_SESSION['msg'] = "Idade não permetida!";
         header('Location: ../index.php');
     } else {
         $usuario->cadastrar();

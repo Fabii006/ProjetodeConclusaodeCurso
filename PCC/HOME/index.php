@@ -36,7 +36,7 @@ require_once("FUNCAO_PHP/functions.php");
         <p class="description">
             Este site é voltado para os interesses da comunidade LGBTQIA+,
             disponibilizando muito além de conhecimento, ajuda. Projetado
-            e construído por Alessandro, Fabiane e Izabella, saiba mais.
+            e construído por Alessandro Gonçalves, Fabiane Carvalho e Izabella Antunes.
         </p>
         <a href="#figuras"><button class=" btn_home SaibaMais" onclick="exibirFiguras();">SAIBA MAIS</button></a>
         <img class="img_home" src="IMAGENS/imagemhome.png">
@@ -45,7 +45,7 @@ require_once("FUNCAO_PHP/functions.php");
         <h2 class="title_1">TUDO QUE VOCÊ IRÁ ENCONTRAR NESTE WESITE</h2>
         <h2 class="title_2">+ Conhecimento</h2>
         <div class="div_cards">
-            <div class="cards" onclick="exibirFiguras();">
+            <div class="cards" id="id_figuras" onclick="exibirFiguras();">
                 <img src="IMAGENS/sr.png" class="icone_card_s">
                 <h2 class="title_card">Figuras importantes</h2>
                 <p class="description_card">
@@ -55,13 +55,13 @@ require_once("FUNCAO_PHP/functions.php");
             <a href="../LOGIN_CADASTRO/index.php?login=true">
                 <div class="cards card_1">
                     <img src="IMAGENS/sd.png" class="icone_card_s">
-                    <h2 class="title_card title_card2">Alertas</h2>
+                    <h2 class="title_card title_card2" id="id_alertas">Alertas</h2>
                     <p class="description_card description_card2">
                         Quer fazer um pedido de ajuda? Ou então, quer fornecer ajuda? Basta se cadastrar ou efetuar o login.
                     </p>
                 </div>
             </a>
-            <div class="cards" onclick="exibirOngs();">
+            <div class="cards" id="id_ong" onclick="exibirOngs();">
                 <img src="IMAGENS/ere.png" class="icone_card_s">
                 <h2 class="title_card">ONG’s importantes</h2>
                 <p class="description_card">

@@ -1,7 +1,7 @@
 <?php
 SESSION_start();
 include_once "../CONEXAO/conexao.php";
-require "VALIDAR/functions.php";
+require "FUNCOES_PHP/functions.php";
 $id = @$_COOKIE['ID'];
 
 $Buscar_usuario = "SELECT * FROM usuario WHERE ID = '$id'";
@@ -62,7 +62,14 @@ if (@$_COOKIE['continuar_logado']) {
                             <img class="img_alerta" id="card__alertas-img-<?php echo $value['ID'] ?>" src="../IMAGENS_PERFIL/<?php echo $row_usuario['Imagem_perfil'] ?>">
                             <div class="meusAlertas_texto" onclick="Abrir_alerta(<?php echo $value['ID'] ?>)">
                                 <h2 class="title_alerta" id="card__alertas-titulo-<?php echo $value['ID'] ?>"><?= $value['Titulo'] ?></h2>
-                                <input type="hidden" name="Nome" value="<?php echo $row_usuario['Nome'] ?>" id="card__alertas-nome-<?php echo $value['ID'] ?>">
+                                <input type="hidden" name="Nome" value="
+                                <?php
+                                if (!empty($row_usuario['Nome_social'])) {
+                                    echo $row_usuario['Nome_social'];
+                                } else {
+                                    echo $row_usuario['Nome'] . ' ' . $row_usuario['Sobrenome'];
+                                }
+                                ?>" id="card__alertas-nome-<?php echo $value['ID'] ?>">
                                 <input type="hidden" name="Tipo" value="<?php echo $value['Tipo'] ?>" id="card__alertas-tipo-<?php echo $value['ID'] ?>">
                                 <input type="hidden" name="Estado" value="<?php echo $value['Estado'] ?>" id="card__alertas-estado-<?php echo $value['ID'] ?>">
                                 <input type="hidden" name="Cidade" value="<?php echo $value['Cidade'] ?>" id="card__alertas-cidade-<?php echo $value['ID'] ?>">
@@ -73,7 +80,7 @@ if (@$_COOKIE['continuar_logado']) {
                             </div>
                             <form method="get" action="VALIDAR/objeto_alerta.php" class="DivExcluirAlerta">
                                 <input type="hidden" name="id_alerta" value="<?php echo $value['ID'] ?>">
-                                <button type="submit" class="Excluir_alerta" name="btn" id="btn">Excluir</button>
+                                <button type="submit" class="Excluir_alerta" name="btn" onclick="return pergunta();">Excluir</button>
                             </form>
                         </div>
                     <?php } ?>
@@ -91,7 +98,7 @@ if (@$_COOKIE['continuar_logado']) {
                 }
                 ?>
                 <form action="VALIDAR/objeto_alerta.php" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="Titulo" placeholder="Título" required>
+                    <input type="text" name="Titulo" minlength="5" maxlength="30" placeholder="Título" required>
                     <select name="Tipo" id="Tipo" class="select-tipo" required>
                         <option value="" disabled selected>Tipo</option>
                         <option value="Solicitar ajuda" data-id="1">Solicitar ajuda</option>
@@ -142,7 +149,7 @@ if (@$_COOKIE['continuar_logado']) {
                         <input type="text" name="Registro" class="input_menor" placeholder="Registro profissional">
                     </div>
                     <input type="text" name="Telefone" maxlength="14" onblur="formataTel(this)" placeholder="Contato (somente números)">
-                    <textarea name="Descricao" rows="10" cols="60" maxlength="1520" placeholder="Descrição" required></textarea>
+                    <textarea name="Descricao" rows="10" cols="60" minlength="100" maxlength="1380" placeholder="Descrição" required></textarea>
                     <button type="submit" class="Button" id="btn" name="btn">CONFIRMAR</button>
                 </form>
             </div>

@@ -5869,3 +5869,7 @@ function Abrir_alerta(idCard) {
   cardAlertaProfissao.innerHTML = "Profissão: " + document.querySelector(`#card__alertas-profissao-${idCard}`).value;
   cardAlertaRegistro.innerHTML = "Registro: " + document.querySelector(`#card__alertas-registro-${idCard}`).value;
 }
+
+function pergunta() {
+  return confirm('Tem certeza que deseja excluir o alerta?');
+}

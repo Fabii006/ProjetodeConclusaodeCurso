@@ -29,9 +29,11 @@ if (@$_COOKIE['continuar_logado']) {
                 <div class="first-column">
                     <h2 class="title titulo">POR QUE EU DEVO ME CADASTR<br>AR?</h2>
                     <p class="description">
-                        Aqui você pode criar alertas levantando vaquinhas e pedidos de ajuda,
-                        além de ficar por dentro de tudo sobre a história da comunidade LGBT
-                        no Brasil e figuras importantes no nosso cenário atual.
+                        Aqui você pode criar alertas com pedidos de ajuda ou então, se for um profissional,
+                        fornecendo ajuda, além de ficar por dentro de tudo sobre a história da comunidade
+                        LGBT+ no Brasil e figuras importantes no nosso cenário atual.
+
+                        Cadastre-se, é rápido, é fácil, é Alerte.
                     </p>
                     <p class="description">
                         Cadastre-se, é rápido, é fácil, é Alerte.
@@ -40,16 +42,18 @@ if (@$_COOKIE['continuar_logado']) {
                 </div>
                 <div class="second-column">
                     <h2 class="title title_1">CADASTRE-SE</h2>
-                    <?php
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
-                    ?>
+                    <div class="div_msg">
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
+                    </div>
                     <form name="cadastro" action="VALIDAR/objeto_user.php" class="form" method="POST">
                         <input type="text" name="nome" class="input_menor" placeholder="Nome" required>
                         <input type="text" name="sobrenome" class="input_menor" placeholder="Sobrenome" required>
-                        <input type="text" name="nome_social" placeholder="Nome social" required>
+                        <input type="text" name="nome_social" placeholder="Nome social">
                         <input type="text" name="usuario" placeholder="Usuário" required>
                         <input type="email" name="email" placeholder="Email" required>
                         <input type="text" name="cpf" id="btn" placeholder="CPF (SOMENTE NÚMEROS)" onblur="formataCPF(this)" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required>
@@ -70,7 +74,6 @@ if (@$_COOKIE['continuar_logado']) {
                     </form>
                 </div>
             </div>
-
             <div class="content second-content">
                 <div class="first-column">
                     <h2 class="title">ALERTE!</h2>
@@ -79,15 +82,17 @@ if (@$_COOKIE['continuar_logado']) {
                 </div>
                 <div class="second-column">
                     <h2 class="title title_2">Login</h2>
-                    <?php
-                    if (isset($_SESSION['msg2'])) {
-                        echo $_SESSION['msg2'];
-                        unset($_SESSION['msg2']);
-                    }
-                    ?>
+                    <div class="div_msg">
+                        <?php
+                        if (isset($_SESSION['msg2'])) {
+                            echo $_SESSION['msg2'];
+                            unset($_SESSION['msg2']);
+                        }
+                        ?>
+                    </div>
                     <form class="form" action="VALIDAR/objeto_user.php" name="logar" method="POST">
                         <input type="text" name="usuario" class="input_login" placeholder="Usuário" required>
-                        <input type="password" name="senha" class="input_login" placeholder="Senha" >
+                        <input type="password" name="senha" class="input_login" placeholder="Senha">
                         <a href="#" class="esqueci_senha">Esqueci senha</a>
                         <input type="hidden" name="sessao" value="login">
                         <button type="submit" class="btn btn_2">LOGAR</button>
